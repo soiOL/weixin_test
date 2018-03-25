@@ -1,0 +1,4 @@
+<!--pages/99/99.wxml-->
+<button wx:for="{{array}}" wx:key="id" data-replytype="{{item.id}}" bindtap='tapped'>
+  {{item.message}}
+</button>

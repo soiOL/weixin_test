@@ -1,0 +1,13 @@
+<!--index.wxml-->
+
+<map
+ class='.map' 
+ longitude='{{jd}}' 
+ latitude='{{wd}}' 
+ markers='{{markers}}'
+ controls='{{list}}'
+ bindcontroltap='bindViewTap'>
+ </map>
+<!--button id='list' class='.location'  bindtap='bindViewTap'>list</button>
+
+
