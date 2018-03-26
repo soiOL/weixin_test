@@ -33,6 +33,21 @@ Page({
     wx.showToast({
       title: '打开',
     })
+    var that = this
+    var lat = options.lat
+    var lon = options.lon
+    //console.log(lat,lon)
+    wx.request({
+      url: 'https://free-api.heweather.com/s6/weather/now?location='+lat+','+lon+'&key=0244c885f15d47da91eec9c7985c073a',
+      data: {
+      },
+      success: function(res){
+        //console.log(res.data)
+        that.setData({
+          weathernow: res.data.HeWeather6[0].basic.location + "\n" + res.data.HeWeather6[0].now.cond_txt
+        })
+      }
+    })
   },
 
   /**

@@ -3,10 +3,14 @@
 const app = getApp()
 
 Page({
+  data: {
+    wd: 0,
+    jd: 0
+  },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../99/99'
+      url: '../99/99?lat='+this.data.wd+'&lon='+this.data.jd
     })
   },
   onLoad: function () {
@@ -18,7 +22,7 @@ Page({
         that.setData({
           list: [{
             id: 1,
-            iconPath: '/imgs/list.png',
+            iconPath: '/imgs/weather.png',
             position: {
               top: listhei - 70,
               left: listwid/2 - 30,
@@ -41,15 +45,14 @@ Page({
           jd: longitude,
           markers: [
             {
-              id: 0
-              , iconPath: "/imgs/location.png"
-              , longitude: longitude
-              , latitude: latitude
-              , width: 20
-              , height: 27
+              id: 0,
+              iconPath: "/imgs/location.png",
+              longitude: longitude,
+              latitude: latitude,
+              width: 30,
+              height: 40
             }
           ],
-          
         })
       }
     })  

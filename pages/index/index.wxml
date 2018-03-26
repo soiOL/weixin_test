@@ -6,7 +6,9 @@
  latitude='{{wd}}' 
  markers='{{markers}}'
  controls='{{list}}'
- bindcontroltap='bindViewTap'>
+ bindcontroltap='bindViewTap'
+ data-lat='{{jd}}'
+ data-lon='{{wd}}'>
  </map>
 <!--button id='list' class='.location'  bindtap='bindViewTap'>list</button>
 
