@@ -5,14 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: [{
-      id: 0,
-      message: 1,
-    },
-    {
-      id: 1,
-      message: 2,
-    }]
+    position: ''
   },
 
   tapped: function(e){
@@ -23,7 +16,40 @@ Page({
     this.setData({
       array: this.data.array}
     )
-    
+  },
+
+  positioninput: function(e){
+    var that = this;
+    that.setData({
+      position: e.detail.value
+    })
+  },
+  getweather: function(e){
+    var that = this;
+    if(this.data.position != ""){
+      wx.request({
+        url: 'https://free-api.heweather.com/s6/weather/now?location=' + this.data.position + '&key=0244c885f15d47da91eec9c7985c073a',
+        data: {
+        },
+        success: function (res) {
+          console.log(res.data)
+          if (res.data.HeWeather6[0].status == "ok"){
+            that.setData({
+              weathernow: res.data.HeWeather6[0].basic.location + "\n" + res.data.HeWeather6[0].now.cond_txt,
+              moreinfo: res.data.HeWeather6[0].now.tmp + "°C\n" + res.data.HeWeather6[0].now.wind_dir,
+              isweather: true
+            })
+          }
+          else {
+            wx.showToast({
+              title: '数据获取失败',
+              icon: 'loading',
+            })
+          }
+        }
+      })
+    }
+      
   },
 
   /**
@@ -33,6 +59,7 @@ Page({
     wx.showToast({
       title: '打开',
     })
+    
     var that = this
     var lat = options.lat
     var lon = options.lon
@@ -44,7 +71,9 @@ Page({
       success: function(res){
         //console.log(res.data)
         that.setData({
-          weathernow: res.data.HeWeather6[0].basic.location + "\n" + res.data.HeWeather6[0].now.cond_txt
+          weathernow: res.data.HeWeather6[0].basic.location + "\n" + res.data.HeWeather6[0].now.cond_txt,
+          moreinfo: res.data.HeWeather6[0].now.tmp + "°C\n" + res.data.HeWeather6[0].now.wind_dir,
+          isweather: true
         })
       }
     })

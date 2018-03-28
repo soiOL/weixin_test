@@ -35,7 +35,7 @@ Page({
       },
     })
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
       success: function (res) {
         console.log(res)
         var latitude = res.latitude
@@ -53,6 +53,12 @@ Page({
               height: 40
             }
           ],
+          weather:[
+            {
+              id: 0,
+              
+            }
+          ]
         })
       }
     })  

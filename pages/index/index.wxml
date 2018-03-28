@@ -5,6 +5,7 @@
  longitude='{{jd}}' 
  latitude='{{wd}}' 
  markers='{{markers}}'
+ markers='{{weather}}'
  controls='{{list}}'
  bindcontroltap='bindViewTap'
  data-lat='{{jd}}'
